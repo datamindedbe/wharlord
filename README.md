@@ -124,7 +124,7 @@ assert(constraintResults(uniqueKeyConstraint).isInstanceOf[ConstraintSuccess])
 ```
 
 ## Documentation
-For a comprehensive list of available constraints, please refer to the [Wiki](https://github.com/FRosner/drunken-data-quality/wiki).
+For a comprehensive list of available constraints, please refer to the [Wiki](https://github.com/datamindedbe/wharlord/wiki).
 
 ## License
 This project is licensed under the Apache License Version 2.0. For details please see the file called LICENSE.
