@@ -4,7 +4,7 @@
 
     <groupId>be.dataminded.wharlord</groupId>
     <artifactId>wharlord</artifactId>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
 
     <name>Data Minded: Wharlord</name>
     <description>
@@ -247,6 +247,6 @@
         <connection>scm:git:git://github.com/datamindedbe/wharlord.git</connection>
         <developerConnection>scm:git:git@github.com:datamindedbe/wharlord.git</developerConnection>
         <url>https://github.com/datamindedbe/wharlord.git</url>
-      <tag>wharlord-1.0</tag>
+      <tag>HEAD</tag>
   </scm>
 </project>
