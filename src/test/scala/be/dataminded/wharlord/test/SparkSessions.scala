@@ -2,7 +2,7 @@ package be.dataminded.wharlord.test
 
 import org.apache.spark.sql.SparkSession
 
-trait SparkContexts {
+trait SparkSessions {
 
   protected val spark: SparkSession =
     SparkSession.builder

@@ -1,13 +1,13 @@
 package be.dataminded.wharlord.constraints
 
 import be.dataminded.wharlord.Check
-import be.dataminded.wharlord.test.{SparkContexts, TestData}
+import be.dataminded.wharlord.test.{SparkSessions, TestData}
 import org.apache.spark.sql.{AnalysisException, DataFrame}
 import org.mockito.Mockito._
 import org.scalatest.mockito.MockitoSugar
 import org.scalatest.{FlatSpec, Matchers}
 
-class JoinableConstraintTest extends FlatSpec with Matchers with MockitoSugar with SparkContexts {
+class JoinableConstraintTest extends FlatSpec with Matchers with MockitoSugar with SparkSessions {
 
   "A JoinableConstraint" should "succeed if a join on the given column yields at least one row" in {
     val columns = "column" -> "column"

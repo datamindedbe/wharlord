@@ -1,11 +1,11 @@
 package be.dataminded.wharlord.constraints
 
 import be.dataminded.wharlord.Check
-import be.dataminded.wharlord.test.{SparkContexts, TestData}
+import be.dataminded.wharlord.test.{SparkSessions, TestData}
 import org.apache.spark.sql.Column
 import org.scalatest.{FlatSpec, Matchers}
 
-class NumberOfRowsConstraintTest extends FlatSpec with Matchers with SparkContexts {
+class NumberOfRowsConstraintTest extends FlatSpec with Matchers with SparkSessions {
 
   "A NumberOfRowsConstraint" should "succeed if the actual number of rows is equal to the expected" in {
     val check = Check(TestData.makeIntegerDf(spark, List(1, 2, 3))).hasNumRows(_ === 3)

@@ -1,12 +1,12 @@
 package be.dataminded.wharlord.constraints
 
 import be.dataminded.wharlord.Check
-import be.dataminded.wharlord.test.{SparkContexts, TestData}
+import be.dataminded.wharlord.test.{SparkSessions, TestData}
 import org.apache.spark.sql.AnalysisException
 import org.apache.spark.sql.types.{DoubleType, IntegerType, LongType, StringType}
 import org.scalatest.{FlatSpec, Matchers}
 
-class TypeConversionConstraintTest extends FlatSpec with Matchers with SparkContexts {
+class TypeConversionConstraintTest extends FlatSpec with Matchers with SparkSessions {
 
   "A TypeConversionConstraint" should "succeed if all elements can be converted" in {
     val column = "column"

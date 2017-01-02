@@ -103,7 +103,6 @@ def allConstraintsSatisfied(checkResult: CheckResult): Boolean =
 val results = Runner.run(Seq(check1, check2), Seq.empty)
 assert(allConstraintsSatisfied(results(check1)))
 assert(allConstraintsSatisfied(results(check2)))
-assert(allConstraintsSatisfied(results(check2)))
 ```
 
 If you want to fail the data load if the number of rows and the unique key constraints are not satisfied, but the duration constraint can be violated, you can write individual assertions for each constraint result.

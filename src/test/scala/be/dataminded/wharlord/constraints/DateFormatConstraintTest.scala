@@ -3,11 +3,11 @@ package be.dataminded.wharlord.constraints
 import java.text.SimpleDateFormat
 
 import be.dataminded.wharlord.Check
-import be.dataminded.wharlord.test.{SparkContexts, TestData}
+import be.dataminded.wharlord.test.{SparkSessions, TestData}
 import org.apache.spark.sql.AnalysisException
 import org.scalatest.{FlatSpec, Matchers}
 
-class DateFormatConstraintTest extends FlatSpec with Matchers with SparkContexts {
+class DateFormatConstraintTest extends FlatSpec with Matchers with SparkSessions {
 
   "A DateFormatConstraint" should "succeed if all elements can be converted to Date" in {
     val column = "column"

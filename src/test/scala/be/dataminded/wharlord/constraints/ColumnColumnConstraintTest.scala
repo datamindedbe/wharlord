@@ -1,11 +1,11 @@
 package be.dataminded.wharlord.constraints
 
 import be.dataminded.wharlord.Check
-import be.dataminded.wharlord.test.{SparkContexts, TestData}
+import be.dataminded.wharlord.test.{SparkSessions, TestData}
 import org.apache.spark.sql.{AnalysisException, Column}
 import org.scalatest.{FlatSpec, Matchers}
 
-class ColumnColumnConstraintTest extends FlatSpec with Matchers with SparkContexts {
+class ColumnColumnConstraintTest extends FlatSpec with Matchers with SparkSessions {
 
   "A ColumnColumnConstraint" should "succeed if all rows satisfy the given condition" in {
     val constraintColumn = new Column("column") > 0

@@ -1,11 +1,11 @@
 package be.dataminded.wharlord.constraints
 
 import be.dataminded.wharlord.Check
-import be.dataminded.wharlord.test.{SparkContexts, TestData}
+import be.dataminded.wharlord.test.{SparkSessions, TestData}
 import org.apache.spark.sql.AnalysisException
 import org.scalatest.{FlatSpec, Matchers}
 
-class AnyOfConstraintTest extends FlatSpec with Matchers with SparkContexts {
+class AnyOfConstraintTest extends FlatSpec with Matchers with SparkSessions {
 
   "An AnyOfConstraint" should "succeed if all values are inside" in {
     val column = "column"

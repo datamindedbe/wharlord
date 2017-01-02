@@ -1,11 +1,11 @@
 package be.dataminded.wharlord.constraints
 
 import be.dataminded.wharlord.Check
-import be.dataminded.wharlord.test.{SparkContexts, TestData}
+import be.dataminded.wharlord.test.{SparkSessions, TestData}
 import org.apache.spark.sql.AnalysisException
 import org.scalatest.{FlatSpec, Matchers}
 
-class NeverNullConstraintTest extends FlatSpec with Matchers with SparkContexts {
+class NeverNullConstraintTest extends FlatSpec with Matchers with SparkSessions {
 
   "A NeverNullConstraint" should "succeed if the column contains no null values" in {
     val column = "column"

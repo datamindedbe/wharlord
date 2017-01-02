@@ -10,7 +10,7 @@ object Runner {
   /**
     * Run checks and then report to the reporters. Each check will be reported by every reporter.
     *
-    * @param checks An iterable of check objects to be reported
+    * @param checks    An iterable of check objects to be reported
     * @param reporters An iterable of reporters
     * @return Result for every check passed as an argument
     */

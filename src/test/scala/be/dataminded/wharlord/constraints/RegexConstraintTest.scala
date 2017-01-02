@@ -1,11 +1,11 @@
 package be.dataminded.wharlord.constraints
 
 import be.dataminded.wharlord.Check
-import be.dataminded.wharlord.test.{SparkContexts, TestData}
+import be.dataminded.wharlord.test.{SparkSessions, TestData}
 import org.apache.spark.sql.AnalysisException
 import org.scalatest.{FlatSpec, Matchers}
 
-class RegexConstraintTest extends FlatSpec with Matchers with SparkContexts {
+class RegexConstraintTest extends FlatSpec with Matchers with SparkSessions {
 
   "A RegexConstraint" should "succeed if all values satisfy the regex" in {
     val column = "column"

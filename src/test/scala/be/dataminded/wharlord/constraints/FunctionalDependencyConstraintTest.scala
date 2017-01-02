@@ -1,11 +1,11 @@
 package be.dataminded.wharlord.constraints
 
 import be.dataminded.wharlord.Check
-import be.dataminded.wharlord.test.{SparkContexts, TestData}
+import be.dataminded.wharlord.test.{SparkSessions, TestData}
 import org.apache.spark.sql.AnalysisException
 import org.scalatest.{FlatSpec, Matchers}
 
-class FunctionalDependencyConstraintTest extends FlatSpec with Matchers with SparkContexts {
+class FunctionalDependencyConstraintTest extends FlatSpec with Matchers with SparkSessions {
 
   "A FunctionalDependencyConstraint" should "succeed if the column values in the determinant set always correspond to " +
     "the column values in the dependent set" in {

@@ -4,7 +4,7 @@ import java.io.{ByteArrayOutputStream, PrintStream}
 
 import be.dataminded.wharlord.constraints._
 import be.dataminded.wharlord.reporters.{ConsoleReporter, Reporter}
-import be.dataminded.wharlord.test.{SparkContexts, TestData}
+import be.dataminded.wharlord.test.{SparkSessions, TestData}
 import org.apache.spark.sql.DataFrame
 import org.scalatest.mockito.MockitoSugar
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FlatSpec, Matchers}
@@ -14,7 +14,7 @@ class CheckTest
   extends FlatSpec
     with Matchers
     with MockitoSugar
-    with SparkContexts {
+    with SparkSessions {
 
   "Multiple checks" should "produce a constraintResults map with all constraints and corresponding results" in {
     val constraintString = "column > 0"

@@ -1,11 +1,11 @@
 package be.dataminded.wharlord.constraints
 
 import be.dataminded.wharlord.Check
-import be.dataminded.wharlord.test.{SparkContexts, TestData}
+import be.dataminded.wharlord.test.{SparkSessions, TestData}
 import org.apache.spark.sql.AnalysisException
 import org.scalatest.{FlatSpec, Matchers}
 
-class UniqueKeyConstraintTest extends FlatSpec with Matchers with SparkContexts {
+class UniqueKeyConstraintTest extends FlatSpec with Matchers with SparkSessions {
 
   "A UniqueKeyConstraint" should "succeed if a given column defines a key" in {
     val df = TestData.makeIntegersDf(spark,
