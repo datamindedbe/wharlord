@@ -138,7 +138,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>git
+            </plugin>
 
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
