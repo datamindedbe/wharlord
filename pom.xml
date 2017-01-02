@@ -8,6 +8,12 @@
     <artifactId>wharlord</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <name>Data Minded: Wharlord</name>
+    <description>
+        Data Quality Checking for Apache Spark
+    </description>
+    <url>https://github.com/datamindedbe/wharlord</url>
+
     <developers>
         <developer>
             <name>Mathias Lavaert</name>
@@ -118,6 +124,32 @@
                             <argLine>-Xms2g -Xmx2g</argLine>
                             <forkMode>once</forkMode>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
