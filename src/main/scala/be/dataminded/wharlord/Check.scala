@@ -24,15 +24,19 @@ case class CheckResult(constraintResults: Map[Constraint, ConstraintResult[Const
   * @param constraints The constraints to apply when this check is run. New ones can be added and will return a new object
   */
 case class Check(dataFrame: DataFrame,
-                 displayName: Option[String] = Option.empty,
+                 jobName: String = "",
+                 dataFrameName: String = "",
+                 displayName: String = "",
                  cacheMethod: Option[StorageLevel] = Check.defaultCacheMethod,
                  constraints: Seq[Constraint] = Seq.empty,
                  id: String = UUID.randomUUID.toString) {
 
-  val name: String = displayName.getOrElse(dataFrame.toString)
+  val name: String = if (displayName.isEmpty) dataFrame.toString else displayName
+  val dfName: String = if (dataFrameName.isEmpty) dataFrame.toString else dataFrameName
+  val job: String = if (jobName.isEmpty) dataFrame.toString else jobName
 
   def addConstraint(c: Constraint): Check =
-    Check(dataFrame, displayName, cacheMethod, constraints ++ List(c))
+    Check(dataFrame, jobName, dataFrameName, displayName, cacheMethod, constraints ++ List(c))
 
   /**
     * Check whether the given columns are a unique key for this table.
@@ -208,7 +212,7 @@ object Check {
             s"""Failed to reference table $table: ${tryTable.failed.getOrElse("No exception provided")}""")
     Check(
       dataFrame = tryTable.get,
-      displayName = Option(table),
+      displayName = table,
       cacheMethod = cacheMethod
     )
   }
