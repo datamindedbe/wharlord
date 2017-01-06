@@ -102,7 +102,7 @@ class CheckTest
     val reporter2 = mock[Reporter]
 
     val constraints = Seq.empty[Constraint]
-    val check = Check(df, None, None, constraints)
+    val check = Check(df, "", "", "", None, constraints)
     val result = check.run(reporter1, reporter2)
 
     result.check shouldBe check
@@ -121,7 +121,7 @@ class CheckTest
     val reporter = mock[Reporter]
 
     val constraints = Seq.empty[Constraint]
-    val check = Check(df, None, None, constraints)
+    val check = Check(df, "", "", "", None, constraints)
     val result = check.run(reporter)
 
     result.check shouldBe check
@@ -145,7 +145,7 @@ class CheckTest
     val consoleReporter = new ConsoleReporter(new PrintStream(consoleBaos))
 
     val constraints = Seq.empty[Constraint]
-    val check = Check(df, None, None, constraints)
+    val check = Check(df, "", "", "", None, constraints)
     val result = check.run()
     check.run(consoleReporter)
 

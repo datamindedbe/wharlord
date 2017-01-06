@@ -45,7 +45,7 @@ class ZeppelinReporterTest extends FlatSpec with Matchers with MockitoSugar {
       constraint2 -> result2,
       constraint3 -> result3
     )
-    val check = Check(df, Some(displayName), Option.empty, constraints.keys.toSeq)
+    val check = Check(df, "", "", displayName, Option.empty, constraints.keys.toSeq)
 
     zeppelinReporter.report(CheckResult(constraints, check, dfCount))
     val expectedOutput = s"""%html
@@ -77,7 +77,7 @@ class ZeppelinReporterTest extends FlatSpec with Matchers with MockitoSugar {
     val prologue = s"It has a total number of ${dfColumns.length} columns and $dfCount rows."
 
     val constraints = Map.empty[Constraint, ConstraintResult[Constraint]]
-    val check = Check(df, Some(displayName), Option.empty, constraints.keys.toSeq)
+    val check = Check(df, "", "", displayName, Option.empty, constraints.keys.toSeq)
 
     zeppelinReporter.report(CheckResult(constraints, check, dfCount))
     val expectedOutput = s"""%html
@@ -105,7 +105,7 @@ Nothing to check!
     val prologue = s"It has a total number of ${dfColumns.length} columns and $dfCount rows."
 
     val constraints = Map.empty[Constraint, ConstraintResult[Constraint]]
-    val check = Check(df, Some(displayName), Option.empty, constraints.keys.toSeq)
+    val check = Check(df, "", "", displayName, Option.empty, constraints.keys.toSeq)
 
     zeppelinReporter.report(CheckResult(constraints, check, dfCount))
     zeppelinReporter.report(CheckResult(constraints, check, dfCount))

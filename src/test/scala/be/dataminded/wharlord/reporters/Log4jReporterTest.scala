@@ -23,10 +23,14 @@ class Log4jReporterTest extends FlatSpec with Matchers with MockitoSugar {
     val constraint = constraintResult.constraint
     val checkId = "check"
     val checkName = "df"
+    val checkJob = "job"
+    val checkDataframe = "df"
     val checkNumRows = 5L
     val check = Check(
       dataFrame = mock[DataFrame],
-      displayName = Some(checkName),
+      jobName = checkJob,
+      dataFrameName = checkDataframe,
+      displayName = checkName,
       cacheMethod = None,
       constraints = Seq(constraint),
       id = checkId
@@ -40,7 +44,10 @@ class Log4jReporterTest extends FlatSpec with Matchers with MockitoSugar {
           Map(
             Log4jReporter.checkIdKey      -> checkId,
             Log4jReporter.checkTimeKey    -> checkTime.toString,
+            Log4jReporter.checkJobKey     -> checkJob,
+            Log4jReporter.checkDataFrameNameKey -> checkDataframe,
             Log4jReporter.checkNameKey    -> checkName,
+
             Log4jReporter.checkNumRowsKey -> checkNumRows
           )),
         Log4jReporter.constraintTypeKey   -> constraint.getClass.getSimpleName.replace("$", ""),
@@ -384,7 +391,7 @@ class Log4jReporterTest extends FlatSpec with Matchers with MockitoSugar {
       result1.constraint -> result1,
       result2.constraint -> result2
     )
-    val check = Check(df, Some(dfName), Option.empty, constraints.keys.toSeq)
+    val check = Check(df, "", "", dfName, Option.empty, constraints.keys.toSeq)
 
     log4jReporter.report(CheckResult(constraints, check, numRows))
   }
@@ -396,6 +403,7 @@ class Log4jReporterTest extends FlatSpec with Matchers with MockitoSugar {
 
     val df = mock[DataFrame]
     val dfName = "myDf"
+    val jobName = "myJob"
     val numRows = 10
     val id = "a"
 
@@ -407,14 +415,14 @@ class Log4jReporterTest extends FlatSpec with Matchers with MockitoSugar {
     val constraints = Map[Constraint, ConstraintResult[Constraint]](
       result1.constraint -> result1
     )
-    val check = Check(df, Some(dfName), Option.empty, constraints.keys.toSeq, id)
+    val check = Check(df, jobName, dfName, dfName, Option.empty, constraints.keys.toSeq, id)
 
     val date = new Date()
     log4jReporter.report(CheckResult(constraints, check, numRows))
 
     verify(logger).log(
       logLevel,
-      s"""{"exception" : null, "check" : {"id" : "$id", "time" : "$date", "name" : "$dfName", "rowsTotal" : $numRows}, "status" : "Success", "constraint" : "DummyConstraint", "message" : "$message1"}""")
+      s"""{"exception" : null, "check" : {"name" : "$dfName", "job" : "$jobName", "rowsTotal" : $numRows, "id" : "$id", "dataFrame" : "$dfName", "time" : "$date"}, "status" : "Success", "constraint" : "DummyConstraint", "message" : "$message1"}""")
   }
 
 }

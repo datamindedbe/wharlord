@@ -25,8 +25,8 @@ class RunnerTest extends FlatSpec with Matchers with MockitoSugar {
     val constraint2 = DummyConstraint(message2, status2)
     val result2 = constraint2.fun(df2)
 
-    val check1 = Check(df1, None, None, Seq(constraint1))
-    val check2 = Check(df2, None, None, Seq(constraint2))
+    val check1 = Check(df1, "", "", "", None, Seq(constraint1))
+    val check2 = Check(df2, "", "", "", None, Seq(constraint2))
 
     val checkResults = Runner.run(List(check1, check2), List.empty)
 
@@ -48,7 +48,7 @@ class RunnerTest extends FlatSpec with Matchers with MockitoSugar {
     val df = mock[DataFrame]
     when(df.persist(storageLevel)).thenReturn(df.asInstanceOf[df.type])
 
-    val check = Check(df, None, Some(storageLevel), Seq(DummyConstraint("test", ConstraintSuccess)))
+    val check = Check(df, "", "", "", Some(storageLevel), Seq(DummyConstraint("test", ConstraintSuccess)))
     val checkResult = Runner.run(List(check), List.empty)(check)
 
     verify(df).persist(storageLevel)
@@ -58,7 +58,7 @@ class RunnerTest extends FlatSpec with Matchers with MockitoSugar {
   it should "not persist and unpersist the data frame if no persist method is specified" in {
     val df = mock[DataFrame]
 
-    val check = Check(df, None, None, Seq(DummyConstraint("test", ConstraintSuccess)))
+    val check = Check(df, "", "", "", None, Seq(DummyConstraint("test", ConstraintSuccess)))
     val checkResult = Runner.run(List(check), List.empty)(check)
 
     verify(df, never()).persist()
@@ -68,7 +68,7 @@ class RunnerTest extends FlatSpec with Matchers with MockitoSugar {
   it should "report to all reporters what it returns" in {
     val df = mock[DataFrame]
 
-    val check = Check(df, None, None, Seq(DummyConstraint("test", ConstraintSuccess)))
+    val check = Check(df, "", "", "", None, Seq(DummyConstraint("test", ConstraintSuccess)))
     val checkResult = Runner.run(List(check), List.empty)(check)
 
     val reporter1 = mock[Reporter]

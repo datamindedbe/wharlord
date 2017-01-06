@@ -36,6 +36,8 @@ object Log4jReporter {
   private[reporters] val checkIdKey = "id"
   private[reporters] val checkTimeKey = "time"
   private[reporters] val checkNameKey = "name"
+  private[reporters] val checkDataFrameNameKey = "dataFrame"
+  private[reporters] val checkJobKey = "job"
   private[reporters] val checkNumRowsKey = "rowsTotal"
 
   private[reporters] val constraintTypeKey = "constraint"
@@ -162,6 +164,8 @@ object Log4jReporter {
           Map(
             checkIdKey      -> check.id,
             checkTimeKey    -> date.toString,
+            checkJobKey     -> check.job,
+            checkDataFrameNameKey -> check.dfName,
             checkNameKey    -> check.name,
             checkNumRowsKey -> checkResult.numRows
           )),

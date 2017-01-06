@@ -45,7 +45,7 @@ class ConsoleReporterTest extends FlatSpec with Matchers with MockitoSugar {
       constraint2 -> result2,
       constraint3 -> result3
     )
-    val check = Check(df, Some(displayName), Option.empty, constraints.keys.toSeq)
+    val check = Check(df, "", "", displayName, Option.empty, constraints.keys.toSeq)
 
     consoleReporter.report(CheckResult(constraints, check, dfCount))
     val expectedOutput = s"""${Console.BLUE}$header${Console.RESET}
@@ -71,7 +71,7 @@ ${Console.YELLOW}- ${result3.message}${Console.RESET}
 
     val header = s"Checking $displayName"
     val prologue = s"It has a total number of ${dfColumns.length} columns and $dfCount rows."
-    val check = Check(df, Some(displayName), Option.empty, Seq.empty)
+    val check = Check(df, "", "", displayName, Option.empty, Seq.empty)
 
     consoleReporter.report(CheckResult(Map.empty, check, dfCount))
     val expectedOutput = s"""${Console.BLUE}$header${Console.RESET}
